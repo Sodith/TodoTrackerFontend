@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todoApp';
+  loader = true;
+  ngOnInit(){
+    setTimeout(()=>{
+      this.loader =false;
+    },1900);
+  }
 }

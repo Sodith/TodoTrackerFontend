@@ -10,8 +10,8 @@ import { CardfetchService } from '../cardfetch.service';
 })
 export class TrashComponent implements OnInit {
 
-  email: any;
-  productList: any[] = [];
+  email:any;
+  productList: any[]=[];
   errorMessage: any;
   // public productList: any;
   // email: any;
@@ -19,37 +19,32 @@ export class TrashComponent implements OnInit {
   filterCategory: any;
   searchKey: string = "";
   public searchTerm !: string;
-  constructor(private breakpointObserver: BreakpointObserver, private fetch: CardfetchService, private route: Router) { }
+  constructor(private breakpointObserver: BreakpointObserver,private fetch:CardfetchService,private route:Router) { }
 
   ngOnInit() {
-    this.email = localStorage.getItem("email");
+    this.email=localStorage.getItem("email");
     console.log(this.email);
-    this.fetch.getTaskFromTrash(this.email).subscribe(res => {
+    this.fetch.getTaskFromTrash(this.email).subscribe(res=>{
       console.log(res);
-      this.productList = res;
+      this.productList =res ;
     });
 
     this.fetch.getTaskFromTrash(this.email)
-      .subscribe(res => {
-        this.productList = res;
-        this.filterCategory = res;
-
-        // this.productList.forEach((a: any) => {
-        //   if(a.category ==="women's clothing" || a.category ==="men's clothing"){
-        //     a.category ="fashion"
-        //   }
-        //   Object.assign(a, { quantity: 1, total: a.price });
-        // });
-        console.log(this.productList)
-      });
+    .subscribe(res => {
+      this.productList = res;
+      this.filterCategory = res;
+     
+      
+      console.log(this.productList)
+    });
     this.fetch.search.subscribe((val: any) => {
       this.searchKey = val;
     })
-
+    
   }
-
-  deletetaskFromTrash(email: any, taskId: any) {
-    this.fetch.deleteTaskFromTrash(email, taskId).subscribe({
+  
+   deletetaskFromTrash(email: any, taskId: any) {
+    this.fetch.deleteTaskFromTrash(email,taskId).subscribe({
       next: data => {
         console.log(data);
         location.reload();
@@ -60,29 +55,12 @@ export class TrashComponent implements OnInit {
       }
     });
   }
-  filter(category: string) {
+  filter(category:string){
     this.filterCategory = this.productList
-      .filter((a: any) => {
-        if (a.category == category || category == '') {
-          return a;
-        }
-      })
-  }
-
-  RecoverDeletedTask(item: any) {
-    this.fetch.ArcheiveDeletedTask(item).subscribe(
-      response => {
-        console.log(item)
-
-        location.reload();
-        console.log(response);
-      },
-      error => {
-        console.log(item)
-        console.log("Something Went Wrong")
-        console.log(error);
+    .filter((a:any)=>{
+      if(a.category == category || category==''){
+        return a;
       }
-    );
+    })
   }
-
 }

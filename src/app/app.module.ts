@@ -28,33 +28,17 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import { NotesComponent } from './notes/notes.component';
 import { TrashComponent } from './trash/trash.component';
-
+import { EditComponent } from './edit/edit.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
 import { FilterPipe } from './shared/filter.pipe';
 import { HeaderComponent } from './header/header.component';
-import { EditComponent } from './edit/edit.component';
-import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
-import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
-
-import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
-import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
-import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
-import { MdbPopoverModule } from 'mdb-angular-ui-kit/popover';
-import { MdbRadioModule } from 'mdb-angular-ui-kit/radio';
-import { MdbRangeModule } from 'mdb-angular-ui-kit/range';
-import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
-import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
-import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
-import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
-import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
-import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
-import {NgxPaginationModule} from 'ngx-pagination';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { SketchpadComponent } from './sketchpad/sketchpad.component';
-import { SignaturePadModule } from 'angular2-signaturepad';
-import { ArchieveComponent } from './archieve/archieve.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -73,9 +57,7 @@ import { ArchieveComponent } from './archieve/archieve.component';
     EditComponent,
     FilterPipe,
     HeaderComponent,
-    SketchpadComponent,
-    ArchieveComponent,
-   
+    
   ],
   imports: [
     BrowserModule,
@@ -98,25 +80,11 @@ import { ArchieveComponent } from './archieve/archieve.component';
     MatMenuModule,
     MatButtonToggleModule,
     MatTabsModule,
-    MdbAccordionModule,
-    MdbCarouselModule,
-    MdbCheckboxModule,
-    MdbCollapseModule,
-    MdbDropdownModule,
-    MdbFormsModule,
-    MdbModalModule,
-    MdbPopoverModule,
-    MdbRadioModule,
-    MdbRangeModule,
-    MdbRippleModule,
-    MdbScrollspyModule,
-    MdbTabsModule,
-    MdbTooltipModule,
-    MdbValidationModule,
-    MdbCheckboxModule,
-    NgxPaginationModule,
     MatPaginatorModule,
-    SignaturePadModule
+    MatSnackBarModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

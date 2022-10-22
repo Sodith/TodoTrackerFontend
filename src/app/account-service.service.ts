@@ -14,10 +14,6 @@ export class AccountServiceService {
   storeUser(name: string,email: string,password: string,phoneNo: number): Observable<any>{
     return this.http.post<any>(`${this.registerUrl}`,{name,email,password,phoneNo});
    }
-   registerUrl1="http://localhost:9000/api/v2/userArchive";
-   storeUser1(email: string ): Observable<any>{
-    return this.http.post<any>(`${this.registerUrl1}`,{email});
-   }
 
    loginUrl="http://localhost:9000/api/v1/login";
    checkUser(loginData:any):Observable<any>{

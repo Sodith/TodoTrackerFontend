@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AccountServiceService } from '../account-service.service';
+import { EmailserviceService } from '../emailservice.service';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +15,10 @@ export class LoginComponent implements OnInit {
   logindata?:any;
   messageOnSubmit:any;
   isloggedin:boolean | undefined;
+subject="Login Successful";
+message="You have successfully login in our portal. If you have not done it Contact immediately. ";
 
-
-  constructor(private route:Router,private api:AccountServiceService) {
+  constructor(private route:Router,private api:AccountServiceService,private email:EmailserviceService,private snackbar:MatSnackBar) {
     window.localStorage.clear();
    }
 
@@ -32,10 +35,10 @@ export class LoginComponent implements OnInit {
       response => {
         console.log("Login Successfull");
         console.log(this.logindata);
-        this.ArchiveRegister(this.logindata.email);
+        this.email.sendMail(this.logindata.email,this.subject,this.message).subscribe();
         window.localStorage.setItem('email', this.logindata.email);
         console.log(this.logindata.email);
-        window.alert("Login Successfull");
+        this.snackbar.open("Login Successfull",'',{duration:3000, verticalPosition:'top'});
         this.route.navigate(['dashboard']);
       },
       error => {
@@ -47,24 +50,6 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-  ArchiveRegister(email:any){
-this.api.storeUser1(email).subscribe(
-  response => {
-   
-  },
-  error => {
-   
-    console.log(error);
-    window.alert("Invalid Credentials Entered");
-    location.reload();
-    return;
-  }
-);
-
-
-  }
-
-
 
   get password() {
     return this.loginFormGroup.get('password')

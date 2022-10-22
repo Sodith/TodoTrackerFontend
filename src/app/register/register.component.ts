@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AccountServiceService } from '../account-service.service';
+import { EmailserviceService } from '../emailservice.service';
 
 
 
@@ -21,9 +23,11 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+   
+   subject="TODO Registration Successful";
+   message="You have successfully registered your email id with our todo application.";
 
-
-  constructor(private api:AccountServiceService,private route:Router) { }
+  constructor(private api:AccountServiceService,private route:Router,private email:EmailserviceService,private snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -32,28 +36,15 @@ export class RegisterComponent implements OnInit {
     this.api.storeUser(name,email,password,phoneNo).subscribe({
       next: data=>{
         console.log(data);
-        alert("Register Successfully");
-        alert("Redirecting to Login Portal");
+        this.email.sendMail(this.form.email,this.subject,this.message).subscribe();
+        this.snackbar.open("Registration Successfull",'',{duration:3000, verticalPosition:'top'});
+        this.snackbar.open("Redirecting to Login Page",'',{duration:2000, verticalPosition:'top'});
         this.route.navigate(['login'])
       },error: err=>{
              console.log("err")
       }
     })
     }
-  // onSubmitArchive(){
-  //   const { name, email, password ,phoneNo} = this.form;
-  //   this.api.storeUser1(name,email,password,phoneNo).subscribe({
-  //     next: data=>{
-  //       console.log(data);
-  //       // alert("Register Successfully");
-  //       // alert("Redirecting to Login Portal");
-  //       // this.route.navigate(['login'])
-  //     },error: err=>{
-  //            console.log("err")
-  //     }
-  //   })
-
-
-  
+   
  
 }

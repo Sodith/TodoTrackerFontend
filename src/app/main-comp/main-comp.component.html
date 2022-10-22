@@ -1,58 +1,40 @@
-<body>
 
-  <div class="col-md-12">
-    <div class="card card-container">
-      <!-- <img id="profile-img"
-      src="https://cdn3.vectorstock.com/i/1000x1000/30/97/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg"
-      class="profile-img-card" /> -->
+      <h1 style="color: red;text-align: center;font-family: cursive;">Add A Task</h1>
+<form  [formGroup]="AddTaskform" (ngSubmit)="Add()" style="margin-left:28px;">
+      <mat-form-field appearance="outline" style="width: 350px;">
+        <mat-label>Task Title</mat-label>
+        <input matInput  id="taskTitle" formControlName="taskTitle" >
+      </mat-form-field><br>
 
+      <mat-form-field appearance="outline" style="width: 350px;">
+        <mat-label>Category</mat-label>
+        <mat-select id="category" formControlName="category">
+          <mat-option value="Official task">Official Task</mat-option>
+          <mat-option value="Non-Official task">UnOfficial Task</mat-option>
+        </mat-select>
+      </mat-form-field><br>
 
-      <h1 style="color: red;text-align: center;">Add a Task</h1>
-      <form [formGroup]="AddTaskform" (ngSubmit)="Add()" >
+      <mat-form-field appearance="outline" style="width: 350px;">
+        <mat-label>Description</mat-label>
+        <textarea matInput  id="inputAddress" formControlName="description" rows="4"></textarea>
+      </mat-form-field><br>
 
-    
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="taskTitle">Task-Title</label>
-            <input type="text" class="form-control" id="taskTitle" placeholder="Task-Title" formControlName="taskTitle" >
-          </div>
+      <mat-form-field appearance="outline" style="width: 350px;">
+        <mat-label>Priority</mat-label>
+        <mat-select id="priority"  formControlName="priority">
+          <mat-option value="Low">Low</mat-option>
+          <mat-option value="Medium">Medium</mat-option>
+          <mat-option value="High">High</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="form-row">
+        <div class="form-group col-md-6" style="width: 350px;">
+          <label for="Date & Time" style="margin-left:35%">Date & Time</label>
+          <input type="datetime-local" class="form-control" id="datetimelocal" formControlName="date">
         </div>
-        <!-- <div class="form-group">
-            <label for="description">description</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="....." formControlName="taskTitle">
-          </div> -->
-        <div class="form-group col-md-4">
-          <label for="category" selected>Category</label>
-          <select id="category" class="form-control"formControlName="category">
-            <option >Official task</option>
-            <option>Non-Official task</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="description">description</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="....." formControlName="description">
-        </div>
-        
-        <div class="form-group col-md-4">
-            <label for="priority">priority</label>
-            <select id="priority" class="form-control" formControlName="priority">
-              <option >High</option>
-              <option >Medium</option>
-              <option >Low</option>
-            </select>
-          </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="datetimelocal">datetimelocal</label>
-            <input type="datetime-local" class="form-control" id="datetimelocal" formControlName="date">
-          </div>
-         
-          
-        </div>
-       
-        <button type="submit" class="btn btn-primary">Add Task</button>
-      </form>
+      </div>
+<br>
+      <button type="submit" class="btn btn-primary" style="margin-left: 35%;">Add Task</button>
 
-    </div>
-  </div>
-</body>
+</form>
