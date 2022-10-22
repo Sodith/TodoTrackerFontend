@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="bg-img" >
+  <div class="content">
+      <header>Registration Form</header>
+      <img class="img-fluid" style="width: 100px;" src="../../assets/img5.png">
+     <br><br>
+     <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <div class="field">
+            <input type="text" name="name" placeholder="                  Enter Your Name" [(ngModel)]="form.name" required minlength="3"
+            maxlength="20" #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }" />
+            <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
+              <div *ngIf="username.errors['required']">Username is required</div>
+              <div *ngIf="username.errors['minlength']">
+                Username must be at least 3 characters
+              </div>
+              <div *ngIf="username.errors['maxlength']">
+                Username must be at most 20 characters
+              </div>
+            </div>
+          </div>
+          <div class="field space">
+            <input type="email"placeholder="                  Enter Your Email" name="email" [(ngModel)]="form.email" required email #email="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.errors }" />
+          <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors['required']">Email is required</div>
+            <div *ngIf="email.errors['email']">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+        <div class="field space">
+          <input type="password"placeholder="                  Enter Your Password" name="password" [(ngModel)]="form.password" required minlength="6"
+            #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
+          <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors['required']">Password is required</div>
+            <div *ngIf="password.errors['minlength']">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="field space">
+          <input type="text"placeholder="                  Enter Your Phone No" name="phoneNo" [(ngModel)]="form.phoneNo" required minlength="3"
+            maxlength="20" #number="ngModel" [ngClass]="{ 'is-invalid': f.submitted && number.errors }" />
+          <div class="invalid-feedback" *ngIf="number.errors && f.submitted">
+            <div *ngIf="number.errors['required']">Phone Number is required</div>
+            <div *ngIf="number.errors['minlength']">
+              Phone Number must be at least 3 characters
+            </div>
+            <div *ngIf="number.errors['maxlength']">
+              Phone Number must be at most 20 characters
+            </div>
+          </div>
+        </div> <br>
+          <div class="field">
+            <div class="instagram">
+              <input type="submit" value="Register">
+            </div>
+            </div>\
+            <br>
+    
+          <div class="signup">Already Registered?
+              <a href="login">Login Now</a>
+          </div>
+      </form>
+  </div>
+
+</div>

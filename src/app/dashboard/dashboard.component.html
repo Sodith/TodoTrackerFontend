@@ -1,0 +1,73 @@
+<div style="height: 89%;">
+  <mat-toolbar color="white">
+    <button mat-icon-button class="example-icon" style="margin-top: 1%;" (click)="isExpanded = !isExpanded">
+        <mat-icon style="transform: scale(1.5);">menu</mat-icon>
+      </button>
+      <img src="https://www.shareicon.net/data/2016/09/13/828455_logo_512x512.png" height="60px" style="margin-top: 1%;">
+      <span style="font-size:x-large ;margin-top: 1%;">ToDo Tracker</span>
+      <mat-form-field class="example-form-field" appearance="outline" style="margin-top: 2.5%;margin-left: 10%;">
+        <button matPrefix mat-icon-button aria-label="Clear"><mat-icon>search</mat-icon></button>
+        <input matInput type="text" placeholder="Search" [(ngModel)]="searchTerm" (keyup)="search($event)">
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+     <button mat-icon-button style="margin-left: 70px;margin-top:1%;"  title="Refresh" ><mat-icon style="transform: scale(1.5);">refresh</mat-icon></button> 
+     <button mat-icon-button style="margin-left: 1.5%;margin-top:1%;"  title="Night Mode" class="theme"><mat-icon style="transform: scale(1.5);">brightness_medium</mat-icon></button> 
+     <button mat-icon-button style="margin-left: 1.5%;margin-top:1%;" title="Settings"><mat-icon style="transform: scale(1.5);">settings</mat-icon></button>
+     <button mat-icon-button style="margin-left: 10%;margin-top:1%;" title="Apps"><mat-icon style="transform: scale(1.5);">apps</mat-icon></button> 
+     <button mat-icon-button style="margin-left: 1.5%;margin-top:1%;" title="Account" [matMenuTriggerFor]="account"><mat-icon style="transform: scale(1.5);">account_circle</mat-icon></button>  
+    </mat-toolbar><br>
+    
+    <mat-menu #account="matMenu">
+      <button mat-menu-item>Welcome ({{email}})</button>
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>account_box</mat-icon>
+        <span>Log Out</span>
+      </button>
+    </mat-menu>
+<mat-sidenav-container class="example-container">
+	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list><br>
+			<mat-list-item routerLink="notes">
+				<span class="full-width" *ngIf="isExpanded || isShowing">Notes</span>
+				<mat-icon mat-list-icon style="transform: scale(1.5);" >lightbulb</mat-icon>
+			</mat-list-item><br>
+			<mat-list-item>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Notifications</span>
+				<mat-icon mat-list-icon style="transform: scale(1.5);">notifications</mat-icon>
+			</mat-list-item><br>
+      <mat-list-item routerLink="edit">
+				<span class="full-width" *ngIf="isExpanded || isShowing">Edit</span>
+				<mat-icon mat-list-icon style="transform: scale(1.5);">edit</mat-icon>
+			</mat-list-item><br>
+      <mat-list-item>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Archive</span>
+				<mat-icon mat-list-icon style="transform: scale(1.5);" >archive</mat-icon>
+			</mat-list-item><br>
+      <mat-list-item routerLink="trash">
+				<span class="full-width" *ngIf="isExpanded || isShowing">Trash</span>
+				<mat-icon mat-list-icon style="transform: scale(1.5);" >delete_outline</mat-icon>
+			</mat-list-item>
+		</mat-nav-list>
+    <mat-nav-list>
+</mat-nav-list>
+	</mat-sidenav>
+  
+	<div class="example-sidenav-content">
+    
+<router-outlet></router-outlet>
+
+  </div>
+</mat-sidenav-container>
+</div>
+
+

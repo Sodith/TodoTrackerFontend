@@ -1,0 +1,43 @@
+.mat-toolbar.mat-white {
+    background: white;
+    color: black;
+  
+    
+  }
+  .example-form-field {
+    width: 100%;
+  }
+  .example-container {
+    height: 100%;
+    border-top: 1px solid gray;
+    background-color: white;
+    
+  }
+  .example-sidenav-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2%;
+  }
+  .example-sidenav {
+     user-select: none;
+     border: none;
+  }
+  .full-width {
+    width: 100%;
+    margin-left:10%;
+    font-size: larger;
+    font-weight: bold;
+    
+  }
+  .menu-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+  }
+  .menu-button.rotated {
+    transform: rotate(180deg);
+  }
+  
+  
+
+
