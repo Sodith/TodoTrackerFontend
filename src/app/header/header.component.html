@@ -1,10 +1,14 @@
-<mat-toolbar color="primary">
-  <nav class="navbar">
-    <a href="">  <span style="font-family:cursive;">Home</span> </a>
-    <a href="features">  <span style="font-family:cursive">Features</span> </a>
-    <a href="pricing"> <span style="font-family:cursive">Pricing</span> </a>
-    <a href="contact">  <span style="font-family:cursive">Contact Us</span> </a>
-    <a href="login"> <span style="font-family:cursive">Login/Register</span> </a>
-</nav>
-</mat-toolbar>
-
+<mat-sidenav-container class="sidenav-container" >
+    <mat-toolbar color="primary">
+      <a href="admin" style="margin-left:5%;"><img src="https://www.shareicon.net/data/2016/09/13/828455_logo_512x512.png" height="50px" style="margin-left:5% ;"></a>
+      <span style="font-family:cursive;color:black">ToDo Tracker</span>
+      <a href="" style="text-decoration: none;color:white;margin-left: 3%;"><span style="font-family:cursive">Home</span></a>
+      <a href="features" style="text-decoration: none;color:white;margin-left: 3%;"><span style="font-family:cursive">Features</span></a>
+        <a href="pricing" style="text-decoration: none;color:white;margin-left: 3%;"><span style="font-family:cursive">Pricing</span></a>
+        <a href="contact" style="text-decoration: none;color:white;margin-left: 3%;"><span style="font-family:cursive">Contact Us</span></a>
+      <button type="button" class="btn btn-danger" style="margin-left:45%" routerLink="login">Login</button>
+      <button type="button" class="btn btn-info" style="margin-left:1%" routerLink="register">Register</button>
+    </mat-toolbar>
+  
+   
+</mat-sidenav-container>

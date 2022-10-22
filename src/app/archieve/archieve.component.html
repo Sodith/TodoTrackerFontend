@@ -8,7 +8,7 @@
       <mat-button-toggle value="underline" (click)="filter('Non-Official task')">Non-Official Task</mat-button-toggle>
     </mat-button-toggle-group></div>
   
-  <div class="container" *ngIf="productList.length!=0">
+  <div class="container" >
     <ng-container *ngFor="let item of filterCategory | filter:searchKey:'taskTitle'">
          <div class="card">
         <div class="box">
@@ -20,8 +20,8 @@
             <p>{{item.date}}</p>
             
             <button mat-icon-button class="dwtn" style="margin-right:50px;"><mat-icon>edit</mat-icon>Edit</button>
-            <button mat-icon-button class="dwtn" (click)="deletetaskFromTrash(email,item.taskId)"><mat-icon>delete</mat-icon>Delete</button>
-            <button  style="margin-right:50px;" (click)="RecoverDeletedTask(item);deletetaskFromTrash(email,item.taskId)">Recover</button>
+            <button mat-icon-button class="dwtn" ><mat-icon>delete</mat-icon>Delete</button>
+            <button  style="margin-right:50px;">Recover</button>
           </div>
       
         </div>
@@ -33,7 +33,7 @@
   
   
   
-      <div class="zeronotes" *ngIf="productList.length==0">
+      <div class="zeronotes">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/OOjs_UI_icon_trash.svg/1200px-OOjs_UI_icon_trash.svg.png"
         class="imagecs">
         <div class="imagefont">No Notes in Trash</div>

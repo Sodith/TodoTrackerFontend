@@ -22,6 +22,19 @@ export class CardfetchService {
       return res;
     }))
   }
+  AUTH_AP11="http://localhost:9000/api/v2/gettask/"
+  // getTaskFromToDoWithId(email:any,taskId:any){
+  //   return this.http.get(this.AUTH_AP11+email+taskId)
+  //   .pipe(map((res:any)=>{
+  //     return res;
+  //   }))
+  // }
+  // getProductData(email:any,taskId:any): Observable<any> {
+  //   return this.http.get<any>(this.AUTH_AP11 + email+taskId);
+  // }
+
+
+
   AUTH_AP5="http://localhost:9000/api/v4/trash/"
   getTaskFromTrash(email:any){
     return this.http.get(this.AUTH_AP5+email)
@@ -29,6 +42,16 @@ export class CardfetchService {
       return res;
     }))
   }
+
+  AUTH_AP12="http://localhost:9000/api/v2/getfromarchive/"
+  getTaskFromArchive(email:any){
+    return this.http.get(this.AUTH_AP12+email)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+
   addProductAdmin(taskTitle:any,category:any,description:any,priority:any,date:any): Observable<any> {
     let email = window.localStorage.getItem('email');
     var taskId =new Date().getTime();
@@ -58,6 +81,20 @@ deleteTask(task:any){
 deleteTaskFromTrash(email:any,taskId:any){
   return this.http.delete("http://localhost:9000/api/v4/deletefromtrash/"+email+"/"+taskId);
 }
+// getProductData(id: any): Observable<any> {
+//   return this.http.get<any>(this.AUTH_API2 + 'vehicle'+ '/' + id);
+// }
+url6:string  = "http://localhost:9000/api/v2/addtotask/"
+ArcheiveDeletedTask(task:any){
+  let email = window.localStorage.getItem('email');
+  return this.http.put<any>(this.url6+email,task);
+}
+url8:string  = "http://localhost:9000/api/v2/addtoArchive/"
+taskCompleted(task:any){
+  let email = window.localStorage.getItem('email');
+  return this.http.put<any>(this.url8+email,task);
+}
+
 
 
 }

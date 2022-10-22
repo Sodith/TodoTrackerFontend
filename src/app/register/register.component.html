@@ -1,13 +1,14 @@
 <app-header></app-header>
-<div class="bg-img" >
-  <div class="content">
-      <header>Registration Form</header>
-      <img class="img-fluid" style="width: 100px;" src="../../assets/img5.png">
-     <br><br>
-     <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-          <div class="field">
-            <input type="text" name="name" placeholder="                  Enter Your Name" [(ngModel)]="form.name" required minlength="3"
-            maxlength="20" #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }" />
+<body style="background-image: url('https://t3.ftcdn.net/jpg/03/55/60/70/360_F_355607062_zYMS8jaz4SfoykpWz5oViRVKL32IabTP.jpg')">
+<br><br>
+  <div class="col-md-12">
+    <div class="card card-container">
+      <img id="profile-img" src="https://cdn3.vectorstock.com/i/1000x1000/30/97/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg" class="profile-img-card" />
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required minlength="3"
+              maxlength="20" #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }" />
             <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
               <div *ngIf="username.errors['required']">Username is required</div>
               <div *ngIf="username.errors['minlength']">
@@ -18,8 +19,9 @@
               </div>
             </div>
           </div>
-          <div class="field space">
-            <input type="email"placeholder="                  Enter Your Email" name="email" [(ngModel)]="form.email" required email #email="ngModel"
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email #email="ngModel"
             [ngClass]="{ 'is-invalid': f.submitted && email.errors }" />
           <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
             <div *ngIf="email.errors['required']">Email is required</div>
@@ -28,8 +30,9 @@
             </div>
           </div>
         </div>
-        <div class="field space">
-          <input type="password"placeholder="                  Enter Your Password" name="password" [(ngModel)]="form.password" required minlength="6"
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
             #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" />
           <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
             <div *ngIf="password.errors['required']">Password is required</div>
@@ -38,30 +41,37 @@
             </div>
           </div>
         </div>
-        <div class="field space">
-          <input type="text"placeholder="                  Enter Your Phone No" name="phoneNo" [(ngModel)]="form.phoneNo" required minlength="3"
-            maxlength="20" #number="ngModel" [ngClass]="{ 'is-invalid': f.submitted && number.errors }" />
-          <div class="invalid-feedback" *ngIf="number.errors && f.submitted">
-            <div *ngIf="number.errors['required']">Phone Number is required</div>
-            <div *ngIf="number.errors['minlength']">
-              Phone Number must be at least 3 characters
-            </div>
-            <div *ngIf="number.errors['maxlength']">
-              Phone Number must be at most 20 characters
-            </div>
-          </div>
-        </div> <br>
-          <div class="field">
-            <div class="instagram">
-              <input type="submit" value="Register">
-            </div>
-            </div>\
-            <br>
-    
-          <div class="signup">Already Registered?
-              <a href="login">Login Now</a>
-          </div>
-      </form>
-  </div>
 
-</div>
+        <div class="form-group">
+            <label for="phoneNo">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNo" [(ngModel)]="form.phoneNo" required minlength="3"
+              maxlength="20" #number="ngModel" [ngClass]="{ 'is-invalid': f.submitted && number.errors }" />
+            <div class="invalid-feedback" *ngIf="number.errors && f.submitted">
+              <div *ngIf="number.errors['required']">Phone Number is required</div>
+              <div *ngIf="number.errors['minlength']">
+                Phone Number must be at least 3 characters
+              </div>
+              <div *ngIf="number.errors['maxlength']">
+                Phone Number must be at most 20 characters
+              </div>
+            </div>
+          </div>
+
+
+        <br>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Register</button>&nbsp;&nbsp;
+          <button class="btn btn-success" routerLink="login">Login</button>
+        </div>
+        <div class="alert alert-success" *ngIf="isSuccessful">
+          Your registration is successful!
+        </div>
+        <!-- <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div> -->
+      </form>
+  
+     
+    </div>
+  </div>
+</body>

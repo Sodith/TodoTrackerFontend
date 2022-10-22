@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AccountServiceService } from '../account-service.service';
-import { EmailserviceService } from '../emailservice.service';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +13,9 @@ export class LoginComponent implements OnInit {
   logindata?:any;
   messageOnSubmit:any;
   isloggedin:boolean | undefined;
-subject="Login Successful";
-message="You have successfully login in our portal. If you have not done it Contact immediately. ";
 
-  constructor(private route:Router,private api:AccountServiceService,private email:EmailserviceService,private snackbar:MatSnackBar) {
+
+  constructor(private route:Router,private api:AccountServiceService) {
     window.localStorage.clear();
    }
 
@@ -35,10 +32,10 @@ message="You have successfully login in our portal. If you have not done it Cont
       response => {
         console.log("Login Successfull");
         console.log(this.logindata);
-        this.email.sendMail(this.logindata.email,this.subject,this.message).subscribe();
+        this.ArchiveRegister(this.logindata.email);
         window.localStorage.setItem('email', this.logindata.email);
         console.log(this.logindata.email);
-        this.snackbar.open("Login Successfull",'',{duration:3000, verticalPosition:'top'});
+        window.alert("Login Successfull");
         this.route.navigate(['dashboard']);
       },
       error => {
@@ -50,6 +47,24 @@ message="You have successfully login in our portal. If you have not done it Cont
       }
     );
   }
+  ArchiveRegister(email:any){
+this.api.storeUser1(email).subscribe(
+  response => {
+   
+  },
+  error => {
+   
+    console.log(error);
+    window.alert("Invalid Credentials Entered");
+    location.reload();
+    return;
+  }
+);
+
+
+  }
+
+
 
   get password() {
     return this.loginFormGroup.get('password')

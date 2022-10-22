@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { CardfetchService } from '../cardfetch.service';
 
 @Component({
-  selector: 'app-trash',
-  templateUrl: './trash.component.html',
-  styleUrls: ['./trash.component.css']
+  selector: 'app-archieve',
+  templateUrl: './archieve.component.html',
+  styleUrls: ['./archieve.component.css']
 })
-export class TrashComponent implements OnInit {
+export class ArchieveComponent implements OnInit {
 
   email: any;
   productList: any[] = [];
@@ -24,12 +24,12 @@ export class TrashComponent implements OnInit {
   ngOnInit() {
     this.email = localStorage.getItem("email");
     console.log(this.email);
-    this.fetch.getTaskFromTrash(this.email).subscribe(res => {
+    this.fetch.getTaskFromArchive(this.email).subscribe(res => {
       console.log(res);
       this.productList = res;
     });
 
-    this.fetch.getTaskFromTrash(this.email)
+    this.fetch.getTaskFromArchive(this.email)
       .subscribe(res => {
         this.productList = res;
         this.filterCategory = res;
@@ -48,18 +48,7 @@ export class TrashComponent implements OnInit {
 
   }
 
-  deletetaskFromTrash(email: any, taskId: any) {
-    this.fetch.deleteTaskFromTrash(email, taskId).subscribe({
-      next: data => {
-        console.log(data);
-        location.reload();
-      },
-      error: err => {
-        this.errorMessage = err.error.message;
-
-      }
-    });
-  }
+ 
   filter(category: string) {
     this.filterCategory = this.productList
       .filter((a: any) => {
@@ -69,20 +58,8 @@ export class TrashComponent implements OnInit {
       })
   }
 
-  RecoverDeletedTask(item: any) {
-    this.fetch.ArcheiveDeletedTask(item).subscribe(
-      response => {
-        console.log(item)
-
-        location.reload();
-        console.log(response);
-      },
-      error => {
-        console.log(item)
-        console.log("Something Went Wrong")
-        console.log(error);
-      }
-    );
+ 
   }
 
-}
+
+
